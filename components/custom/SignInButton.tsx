@@ -29,7 +29,8 @@ const googleLogin = useGoogleLogin({
       })
       const userDetail = {
         ...user,
-        _id:result?.id??result
+        _id:result._id,
+        credits:result.credits
       }
       if(typeof window!==undefined){
         localStorage.setItem('userDetail',JSON.stringify(userDetail))

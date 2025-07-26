@@ -13,16 +13,25 @@ export const CreateUser = mutation({
       .query("users")
       .filter((q) => q.eq(q.field("email"), args.email))
       .collect();
+
+      if (user.length > 0) {
+        return user[0]; // full user object
+      }
     //if user doesnt exist then create new user
-    if (user?.length == 0) {
-      const result = await ctx.db.insert("users", {
-        name: args.name,
-        email: args.email,
-        picture: args.picture,
-        credits: 3,
-      });
-      return result;
-    }
-    return user[0]
+    const _id = await ctx.db.insert("users", {
+      name: args.name,
+      email: args.email,
+      picture: args.picture,
+      credits: 3,
+    });
+
+    return {
+      _id,
+      name: args.name,
+      email: args.email,
+      picture: args.picture,
+      credits: 3,
+    };
+   
   },
 });
