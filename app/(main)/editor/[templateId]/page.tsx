@@ -32,7 +32,10 @@ function  Editor() {
     })
 
     console.log(result)
-    setEmailTemplate(result?.design)
+    if(result){
+      setEmailTemplate(result?.design)
+    }
+    
     setLoading(false)
   }
   return (
