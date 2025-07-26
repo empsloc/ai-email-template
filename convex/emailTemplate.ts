@@ -41,7 +41,7 @@ export const GetTemplateDesign = query({
 
       return result[0];
     } catch (error) {
-      return {};
+      return {error:error};
     }
   },
 });

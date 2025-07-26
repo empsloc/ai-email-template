@@ -9,7 +9,13 @@ import { useConvex } from 'convex/react'
 import { useParams } from 'next/navigation'
 
 import React, { useEffect, useState } from 'react'
-
+export interface EmailTemplateType {
+    _id: string;
+    tid: string;
+    design: any; // or a more specific type if possible
+    email: string;
+    description: string;
+  }
 function  Editor() {
   const [viewHTMLCode,setViewHTMLCode] = useState<any>()
   const {templateId} = useParams<any>()
@@ -29,7 +35,8 @@ function  Editor() {
       tid:templateId,
       email:userDetail?.email
 
-    })
+    }) as EmailTemplateType;
+
 
     console.log(result)
     if(result){
