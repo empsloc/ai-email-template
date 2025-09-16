@@ -32,15 +32,18 @@ userDetail&&GetTemplateList()
             <Button className="mt-7 cursor-pointer">+ Create New</Button>
           </Link>
         </div>
-      ):<div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-5">
+      ):<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-5">
         {emailList?.map((item:any,index:any)=>(
-          <div className="p-5 rounded-lg shadow-md border" key={index}>
+          <div className="p-5 rounded-lg shadow-md border flex flex-col justify-between" key={index}>
+            <div className=" ">
             <Image className="w-full" src={"/emailbox.png"} alt="email" width={200} height={200}/>
            
               <h2 className="mt-2">{item?.description}</h2>
+              </div>
               <Link href={"/editor/"+item.tid}>
-             <Button className="mt-2 w-full">View/Edit</Button>
+             <Button className="mt-2 w-full cursor-pointer">View/Edit</Button>
              </Link>
+             
             
             </div>
         ))}

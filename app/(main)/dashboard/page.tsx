@@ -1,26 +1,31 @@
 "use client"
 import { useUserDetail } from '@/app/provider'
 import EmailTemplateList from '@/components/custom/EmailTemplateList'
-import Header from '@/components/custom/Header'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import React from 'react'
 
 function Dashboard() {
-    const {userDetail,setUserDetail} = useUserDetail()
+  const { userDetail } = useUserDetail()
 
   return (
     <div>
-       
-        <div className='p-10 md:px-28 lg:px-40 xl:px-56 mt-16'>
-            <div className='flex justify-between items-center'>
-                <h2 className='font-bold text-3xl'>Hello, {userDetail?.name}</h2>
-                <Link href={"/dashboard/create"}>
-                <Button>+ Create New Email Template</Button>
-                </Link>
-            </div>
-            <EmailTemplateList/>
+      <div className="p-4 sm:p-6 md:px-16 lg:px-28 xl:px-40 mt-16">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <h2 className="font-bold text-2xl sm:text-3xl text-center sm:text-left">
+            Hello, {userDetail?.name}
+          </h2>
+          <Link href="/dashboard/create" className="w-full sm:w-auto">
+            <Button className="w-full sm:w-auto cursor-pointer">
+              + Create New Email Template
+            </Button>
+          </Link>
         </div>
+
+        <div className="mt-8">
+          <EmailTemplateList />
+        </div>
+      </div>
     </div>
   )
 }
